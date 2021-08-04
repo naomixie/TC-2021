@@ -13,16 +13,16 @@ public class Item : InteractableObject
 
     public string type;
 
-    Item(string item_name, Sprite icon, string description, Sprite detail_image, GameObject object_prefab, int count, string type)
-    {
-        this.ItemName = item_name;
-        this.icon = icon;
-        this.description = description;
-        this.detailImage = detail_image;
-        this.ObjectPrefab = object_prefab;
-        this.count = count;
-        this.type = type;
-    }
+    // Item(string item_name, Sprite icon, string description, Sprite detail_image, GameObject object_prefab, int count, string type)
+    // {
+    //     this.ItemName = item_name;
+    //     this.icon = icon;
+    //     this.description = description;
+    //     this.detailImage = detail_image;
+    //     this.ObjectPrefab = object_prefab;
+    //     this.count = count;
+    //     this.type = type;
+    // }
 
     public virtual void Use()
     {

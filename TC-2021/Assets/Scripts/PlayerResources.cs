@@ -11,15 +11,15 @@ public class PlayerResources : MonoBehaviour
     public float OxygenDecreaseRate = 2.0f;
     public int oxygen_tank_number = 3;
 
-    public float MaxWater = 100f;
+    public int MaxWater = 3;
     public float WaterAccquireSpeed = 2.0f;
 
     public Slider OxygenSlider;
     public Text OxygenRate;
 
 
-    private float current_oxygen;
-    private float current_water;
+    public float current_oxygen;
+    public int current_water = 0;
 
     private float timer = 0;
 

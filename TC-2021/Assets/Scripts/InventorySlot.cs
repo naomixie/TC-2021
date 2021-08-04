@@ -37,13 +37,11 @@ public class InventorySlot : MonoBehaviour
 
     public void OnPointerClick()
     {
-        Debug.Log("Clicking Item : " + item.ItemName);
 
         if (item != null)
-        {
-            Debug.Log("Clicking Item : " + item.ItemName);
+
             InventoryUI.instance.OnSlotSelected(this);
-        }
+
     }
 
     public void OnPointerEnter()
