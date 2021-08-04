@@ -10,6 +10,7 @@ public class WorkshopMakeOxygenTank : InteractableObject
         if (Inventory.instance.MakeOxygenTank())
         {
             PlayerResources.instance.oxygen_tank_number++;
+            PlayerResources.instance.GenerateOxy();
         }
         else
         {

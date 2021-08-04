@@ -10,6 +10,10 @@ public class PlayerResources : MonoBehaviour
     public float MaxOxygen = 100f;
     public float OxygenDecreaseRate = 2.0f;
     public int oxygen_tank_number = 3;
+    public int max_oxygen_tank = 5;
+    public GameObject GenerateOxygenImagePosition;
+    private List<GameObject> GeneratedOxygenTank = new List<GameObject>();
+    public GameObject OxygenImagePrefab;
 
     public int MaxWater = 3;
     public float WaterAccquireSpeed = 2.0f;
@@ -52,6 +56,7 @@ public class PlayerResources : MonoBehaviour
         WaterSlider.maxValue = MaxWater;
         WaterSlider.value = current_water;
         WaterSlider.minValue = 0;
+        GenerateOxy();
     }
 
     // Update is called once per frame
@@ -72,6 +77,7 @@ public class PlayerResources : MonoBehaviour
             else
             {
                 --oxygen_tank_number;
+                GenerateOxy();
                 current_oxygen = MaxOxygen;
             }
         }
@@ -91,6 +97,18 @@ public class PlayerResources : MonoBehaviour
                 ToolImage.sprite = LadderImage;
                 WaterSlider.gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void GenerateOxy()
+    {
+        foreach (GameObject gameObject in GeneratedOxygenTank)
+        {
+            Destroy(gameObject);
+        }
+        for (int i = 0; i < oxygen_tank_number; ++i)
+        {
+            GeneratedOxygenTank.Add(Instantiate(OxygenImagePrefab, GenerateOxygenImagePosition.transform, false));
         }
     }
 
