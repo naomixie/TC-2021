@@ -30,7 +30,7 @@ public class InventoryUI : MonoBehaviour
             if (i < Inventory.instance.items.Count)
             {
                 slots[i].AddItem(Inventory.instance.items[i]);
-                Debug.Log("added item " + Inventory.instance.items[i].name + " at " + i);
+                // Debug.Log("added item " + Inventory.instance.items[i].name + " at " + i);
             }
             else
             {
@@ -81,12 +81,6 @@ public class InventoryUI : MonoBehaviour
 
     public void Update()
     {
-        //if (gameObject.activeSelf && selectedSlot!= null && Input.GetKeyDown(KeyCode.W))
-        //{
-        // Use item only when object is chosen
-        //selectedSlot.item.Use();
-        //}
-
         if (selectedSlot != null)
         {
             detailsImage.sprite = selectedSlot.item.detailImage;

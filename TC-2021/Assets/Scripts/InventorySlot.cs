@@ -17,8 +17,7 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = item.icon;
         icon.enabled = true;
         newItem.gameObject.SetActive(false);
-        Debug.Log("adding item " + item.name + " at slot ");
-        Debug.Log(item == null);
+        // Debug.Log("adding item " + item.name + " at slot ");
     }
 
     public void ClearSlot()
@@ -36,17 +35,23 @@ public class InventorySlot : MonoBehaviour
     //    }
     //}
 
-    public void PointerClick()
+    public void OnPointerClick()
     {
-        if (item != null) InventoryUI.instance.OnSlotSelected(this);
+        Debug.Log("Clicking Item : " + item.ItemName);
+
+        if (item != null)
+        {
+            Debug.Log("Clicking Item : " + item.ItemName);
+            InventoryUI.instance.OnSlotSelected(this);
+        }
     }
 
-    public void PointerEnter()
+    public void OnPointerEnter()
     {
         if (item != null) InventoryUI.instance.OnSlotEnter(this);
     }
 
-    public void PointerExit()
+    public void OnPointerExit()
     {
         if (item != null) InventoryUI.instance.OnSlotExit(this);
 

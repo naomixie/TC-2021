@@ -6,14 +6,17 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
     public float radius = 3f;
+    public GameObject ObjectPrefab;
+
 
     void Start()
     {
         gameObject.tag = "InteractableObject";
+
     }
     public virtual void Interact()
     {
-        Debug.Log("Interact");
+        // Debug.Log("Interact");
     }
 
     private void OnDrawGizmosSelected()
