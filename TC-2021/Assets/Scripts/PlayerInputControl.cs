@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerInputControl : MonoBehaviour
 {
+    private Raycast raycast;
     // Start is called before the first frame update
     void Start()
     {
-
+        raycast = GetComponent<Raycast>();
     }
 
     // Update is called once per frame
@@ -16,6 +17,10 @@ public class PlayerInputControl : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             Debug.Log("Pressed");
+            if (raycast.GetInteractableRaycastedObject() != null)
+            {
+                raycast.GetInteractableRaycastedObject().GetComponent<InteractableObject>().Interact();
+            }
         }
         else if (Input.GetButtonDown("Inventory"))
         {
