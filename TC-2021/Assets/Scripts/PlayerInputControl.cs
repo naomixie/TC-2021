@@ -24,8 +24,8 @@ public class PlayerInputControl : MonoBehaviour
         }
         else if (Input.GetButtonDown("Inventory"))
         {
-            InventoryUI.instance.gameObject.SetActive(!InventoryUI.instance.gameObject.active);
-            if (InventoryUI.instance.gameObject.active)
+            InventoryUI.instance.InventoryPanel.SetActive(!InventoryUI.instance.InventoryPanel.activeSelf);
+            if (InventoryUI.instance.InventoryPanel.activeSelf)
             {
                 Cursor.lockState = CursorLockMode.Confined;
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = false;

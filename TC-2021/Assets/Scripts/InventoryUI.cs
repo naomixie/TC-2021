@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     public static InventoryUI instance;
+    public GameObject InventoryPanel;
 
     public Image detailsImage;
     public Text detailsText;
@@ -20,7 +21,13 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        ResetSlots();
+        // UpdateUI();
+        InventoryPanel.SetActive(false);
     }
 
     public void UpdateUI()
