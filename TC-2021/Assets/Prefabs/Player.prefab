@@ -4771,7 +4771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1893212417
 Transform:
   m_ObjectHideFlags: 0
@@ -9759,6 +9759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fdcc6a0465f60429fb1268ca086647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun_length: 10
+  WaterPS: {fileID: 538209335}
+  OxygenPS: {fileID: 1893212419}
 --- !u!114 &4435773468716899054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9791,6 +9794,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxCapacity: 20
+  MakeOxygenTankSteelNumber: 5
+  MakeOxygenTankWoodNumber: 20
+  MakeLadderWood: 30
   items: []
 --- !u!114 &661572523
 MonoBehaviour:
@@ -9829,6 +9835,9 @@ MonoBehaviour:
   MaxWater: 100
   WaterAccquireSpeed: 2
   OxygenSlider: {fileID: 0}
+  OxygenRate: {fileID: 0}
+  current_oxygen: 0
+  current_water: 0
 --- !u!1 &4435773469325756812
 GameObject:
   m_ObjectHideFlags: 0

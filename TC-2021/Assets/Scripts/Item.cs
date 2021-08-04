@@ -9,6 +9,20 @@ public class Item : InteractableObject
     public string description;
     public Sprite detailImage = null;
     public GameObject ObjectPrefab;
+    public int count;
+
+    public string type;
+
+    // Item(string item_name, Sprite icon, string description, Sprite detail_image, GameObject object_prefab, int count, string type)
+    // {
+    //     this.ItemName = item_name;
+    //     this.icon = icon;
+    //     this.description = description;
+    //     this.detailImage = detail_image;
+    //     this.ObjectPrefab = object_prefab;
+    //     this.count = count;
+    //     this.type = type;
+    // }
 
     public virtual void Use()
     {
@@ -16,10 +30,8 @@ public class Item : InteractableObject
     }
     public override void Interact()
     {
-        // Debug.Log("Interacting " + name);
-        //Executes all the code from the base interaction function located inside InteractableT
         base.Interact();
-        //After this would be code exclusive to Item
+        count = Random.Range(5, 8);
         if (Inventory.instance.AddItem(this))
         {
             ObjectPrefab.SetActive(false);

@@ -5,21 +5,31 @@ using UnityEngine.UI;
 
 public class PlayerResources : MonoBehaviour
 {
+    public static PlayerResources instance;
+
     public float MaxOxygen = 100f;
     public float OxygenDecreaseRate = 2.0f;
     public int oxygen_tank_number = 3;
 
-    public float MaxWater = 100f;
+    public int MaxWater = 3;
     public float WaterAccquireSpeed = 2.0f;
 
     public Slider OxygenSlider;
     public Text OxygenRate;
 
 
-    private float current_oxygen;
-    private float current_water;
+    public float current_oxygen;
+    public int current_water = 0;
 
     private float timer = 0;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +50,18 @@ public class PlayerResources : MonoBehaviour
         {
             current_oxygen -= OxygenDecreaseRate;
             timer = 0;
+        }
+        if (current_oxygen < 0)
+        {
+            if (oxygen_tank_number == 0)
+            {
+                Debug.Log("GameOver");
+            }
+            else
+            {
+                --oxygen_tank_number;
+                current_oxygen = MaxOxygen;
+            }
         }
         OxygenSlider.value = current_oxygen;
         OxygenRate.text = OxygenSlider.value.ToString() + "%";
