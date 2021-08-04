@@ -5,17 +5,16 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public int MaxCapacity = 20;
-    private List<Item> items = new List<Item>();
+    public List<Item> items = new List<Item>();
+
+    public static Inventory instance;
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     public bool AddItem(Item item)
