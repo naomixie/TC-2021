@@ -46,6 +46,10 @@ public class PlayerInputControl : MonoBehaviour
             {
                 if (hit.collider.tag == "Water")
                 {
+                    if (PlayerResources.instance.current_water == PlayerResources.instance.MaxWater)
+                    {
+                        return;
+                    }
                     timer += Time.deltaTime;
                     if (timer > 2)
                     {

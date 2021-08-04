@@ -17,6 +17,13 @@ public class PlayerResources : MonoBehaviour
     public Slider OxygenSlider;
     public Text OxygenRate;
 
+    public Slider WaterSlider;
+    public Image ToolImage;
+
+    public Sprite GunImage;
+    public Sprite LadderImage;
+    public string mode;
+
 
     public float current_oxygen;
     public int current_water = 0;
@@ -40,6 +47,11 @@ public class PlayerResources : MonoBehaviour
         OxygenSlider.value = current_oxygen;
         OxygenSlider.maxValue = MaxOxygen;
         OxygenSlider.minValue = 0;
+        mode = "gun";
+        ToolImage.sprite = GunImage;
+        WaterSlider.maxValue = MaxWater;
+        WaterSlider.value = current_water;
+        WaterSlider.minValue = 0;
     }
 
     // Update is called once per frame
@@ -65,6 +77,21 @@ public class PlayerResources : MonoBehaviour
         }
         OxygenSlider.value = current_oxygen;
         OxygenRate.text = OxygenSlider.value.ToString() + "%";
+        WaterSlider.value = current_water;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            mode = mode == "gun" ? "ladder" : "gun";
+            if (mode == "gun")
+            {
+                ToolImage.sprite = GunImage;
+                WaterSlider.gameObject.SetActive(true);
+            }
+            else
+            {
+                ToolImage.sprite = LadderImage;
+                WaterSlider.gameObject.SetActive(false);
+            }
+        }
     }
 
 }
