@@ -5,6 +5,9 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public int MaxCapacity = 20;
+    public int MakeOxygenTankSteelNumber = 5;
+    public int MakeOxygenTankWoodNumber = 20;
+    public int MakeLadderWood = 30;
     public List<Item> items = new List<Item>();
 
     public static Inventory instance;
@@ -19,6 +22,15 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
+        foreach (Item it in items)
+        {
+            if (it.type == item.type)
+            {
+                it.count += item.count;
+                InventoryUI.instance.UpdateUI();
+                return true;
+            }
+        }
         if (items.Count < MaxCapacity)
         {
             items.Add(item);
@@ -32,5 +44,59 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);
         InventoryUI.instance.UpdateUI();
+    }
+
+    public bool MakeOxygenTank()
+    {
+        foreach (Item item in items)
+        {
+            if (item.type == "steel" && item.count >= MakeOxygenTankSteelNumber)
+            {
+                foreach (Item wood in items)
+                {
+                    if (wood.type == "wood" && wood.count >= MakeOxygenTankWoodNumber)
+                    {
+                        if (item.count - MakeOxygenTankSteelNumber == 0)
+                        {
+                            Remove(item);
+                        }
+                        else
+                        {
+                            item.count -= MakeOxygenTankSteelNumber;
+                        }
+                        if (wood.count - MakeOxygenTankWoodNumber == 0)
+                        {
+                            Remove(wood);
+                        }
+                        else
+                        {
+                            wood.count -= MakeOxygenTankWoodNumber;
+                        }
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public bool MakeLadder()
+    {
+        foreach (Item item in items)
+        {
+            if (item.type == "wood" && item.count >= MakeLadderWood)
+            {
+                if (item.count - MakeLadderWood == 0)
+                {
+                    Remove(item);
+                }
+                else
+                {
+                    item.count -= MakeLadderWood;
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }
