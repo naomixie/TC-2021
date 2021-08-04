@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
         if (items.Count < MaxCapacity)
         {
             items.Add(item);
-            // InventoryUI.instance.UpdateUI();
+            InventoryUI.instance.UpdateUI();
             return true;
         }
         return false;
@@ -31,6 +31,6 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         items.Remove(item);
-        // InventoryUI.instance.UpdateUI();
+        InventoryUI.instance.UpdateUI();
     }
 }
