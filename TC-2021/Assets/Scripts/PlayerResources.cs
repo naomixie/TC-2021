@@ -13,6 +13,7 @@ public class PlayerResources : MonoBehaviour
     public float WaterAccquireSpeed = 2.0f;
 
     public Slider OxygenSlider;
+    public Text OxygenRate;
 
 
     private float current_oxygen;
@@ -41,6 +42,7 @@ public class PlayerResources : MonoBehaviour
             timer = 0;
         }
         OxygenSlider.value = current_oxygen;
+        OxygenRate.text = OxygenSlider.value.ToString() + "%";
     }
 
 }
