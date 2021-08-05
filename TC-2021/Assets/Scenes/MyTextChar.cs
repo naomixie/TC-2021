@@ -13,7 +13,7 @@ public class MyTextChar : MonoBehaviour
     private float timer2;
     //限制条件，是否可以进行文本的输出
     private bool isPrint = false;
-    private float perCharSpeed=1;
+    public float perCharSpeed=1;
  
     private int text_length = 0;
     private string Ctext;
