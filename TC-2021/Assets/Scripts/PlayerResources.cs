@@ -34,6 +34,8 @@ public class PlayerResources : MonoBehaviour
 
     private float timer = 0;
 
+    public GameObject BloodScreen;
+
     void Awake()
     {
         if (instance == null)
@@ -52,6 +54,7 @@ public class PlayerResources : MonoBehaviour
         OxygenSlider.maxValue = MaxOxygen;
         OxygenSlider.minValue = 0;
         mode = "gun";
+        BloodScreen.SetActive(false);
         ToolImage.sprite = GunImage;
         WaterSlider.maxValue = MaxWater;
         WaterSlider.value = current_water;
@@ -84,8 +87,21 @@ public class PlayerResources : MonoBehaviour
         OxygenSlider.value = current_oxygen;
         OxygenRate.text = OxygenSlider.value.ToString() + "%";
         WaterSlider.value = current_water;
+        if (current_oxygen < 40)
+        {
+            BloodScreen.SetActive(true);
+        }
+        else
+        {
+            BloodScreen.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
+            if (mode == "gun" && !Inventory.instance.LadderExist())
+            {
+                return;
+            }
             mode = mode == "gun" ? "ladder" : "gun";
             if (mode == "gun")
             {

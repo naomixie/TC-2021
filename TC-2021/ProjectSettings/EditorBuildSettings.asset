@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Toon Desert/Scenes/Demo_Scene_Day.unity
+    guid: f904f2a5d2f7598428e09b927e1f6c18
   m_configObjects: {}

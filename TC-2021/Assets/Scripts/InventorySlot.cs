@@ -37,6 +37,7 @@ public class InventorySlot : MonoBehaviour
 
     public void OnPointerClick()
     {
+        Debug.Log("TTT");
 
         if (item != null)
 

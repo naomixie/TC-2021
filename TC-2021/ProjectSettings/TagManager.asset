@@ -8,6 +8,8 @@ TagManager:
   - Water
   - Hills
   - InitialSpawn
+  - BuildLadder
+  - BuildOxygenTank
   layers:
   - Default
   - TransparentFX

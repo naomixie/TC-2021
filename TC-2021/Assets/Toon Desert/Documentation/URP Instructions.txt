@@ -1,0 +1,4 @@
+Added URP compatibility from 2019.4 and later.
+
+When importing the pack in a URP project, open the "URP_Install_Toon Desert" file from the project hierarchy.
+After the installation, if necessary, right-click the Models and Prefabs folders and select "Reimport", in case the asset preview icons show pink.

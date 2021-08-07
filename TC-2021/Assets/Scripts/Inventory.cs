@@ -22,12 +22,14 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
+        Debug.Log("Adding :" + item.ItemName);
         foreach (Item it in items)
         {
             if (it.type == item.type)
             {
                 it.count += item.count;
                 InventoryUI.instance.UpdateUI();
+                WarningPanel.instance.SendWarningText("Added " + item.count + " " + item.ItemName + " to inventory.");
                 return true;
             }
         }
@@ -35,6 +37,7 @@ public class Inventory : MonoBehaviour
         {
             items.Add(item);
             InventoryUI.instance.UpdateUI();
+            WarningPanel.instance.SendWarningText("Added " + item.count + " " + item.ItemName + " to inventory.");
             return true;
         }
         return false;
@@ -94,6 +97,36 @@ public class Inventory : MonoBehaviour
                 {
                     item.count -= MakeLadderWood;
                 }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool LadderExist()
+    {
+        foreach (Item item in items)
+        {
+            if (item.type == "ladder")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool DeductItem(string type, int number)
+    {
+        foreach (Item item1 in items)
+        {
+            if (item1.type == type && item1.count > number)
+            {
+                item1.count -= number;
+                return true;
+            }
+            else if (item1.type == type && item1.count == number)
+            {
+                Remove(item1);
                 return true;
             }
         }
