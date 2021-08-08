@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public int MaxCapacity = 20;
-    public int MakeOxygenTankSteelNumber = 5;
-    public int MakeOxygenTankWoodNumber = 20;
-    public int MakeLadderWood = 30;
+    public static Inventory instance;
+
     public List<Item> items = new List<Item>();
 
-    public static Inventory instance;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -22,22 +19,20 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(Item item)
     {
-        Debug.Log("Adding :" + item.ItemName);
+        // Debug.Log("Adding :" + item.ItemName);
         foreach (Item it in items)
         {
             if (it.type == item.type)
             {
                 it.count += item.count;
-                InventoryUI.instance.UpdateUI();
-                WarningPanel.instance.SendWarningText("Added " + item.count + " " + item.ItemName + " to inventory.");
+                UpdateInventory("Added " + item.count + " " + item.ItemName + " to inventory.");
                 return true;
             }
         }
-        if (items.Count < MaxCapacity)
+        if (items.Count < GlobalVariables.instance.MaxCapacity)
         {
             items.Add(item);
-            InventoryUI.instance.UpdateUI();
-            WarningPanel.instance.SendWarningText("Added " + item.count + " " + item.ItemName + " to inventory.");
+            UpdateInventory("Added " + item.count + " " + item.ItemName + " to inventory.");
             return true;
         }
         return false;
@@ -46,68 +41,14 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         items.Remove(item);
-        InventoryUI.instance.UpdateUI();
+        UpdateInventory("Removed " + item.ItemName + " from inventory.");
     }
 
-    public bool MakeOxygenTank()
+    public bool FindItem(ItemType type, int count)
     {
         foreach (Item item in items)
         {
-            if (item.type == "steel" && item.count >= MakeOxygenTankSteelNumber)
-            {
-                foreach (Item wood in items)
-                {
-                    if (wood.type == "wood" && wood.count >= MakeOxygenTankWoodNumber)
-                    {
-                        if (item.count - MakeOxygenTankSteelNumber == 0)
-                        {
-                            Remove(item);
-                        }
-                        else
-                        {
-                            item.count -= MakeOxygenTankSteelNumber;
-                        }
-                        if (wood.count - MakeOxygenTankWoodNumber == 0)
-                        {
-                            Remove(wood);
-                        }
-                        else
-                        {
-                            wood.count -= MakeOxygenTankWoodNumber;
-                        }
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    public bool MakeLadder()
-    {
-        foreach (Item item in items)
-        {
-            if (item.type == "wood" && item.count >= MakeLadderWood)
-            {
-                if (item.count - MakeLadderWood == 0)
-                {
-                    Remove(item);
-                }
-                else
-                {
-                    item.count -= MakeLadderWood;
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public bool LadderExist()
-    {
-        foreach (Item item in items)
-        {
-            if (item.type == "ladder")
+            if (item.type == type && count >= item.count)
             {
                 return true;
             }
@@ -115,7 +56,73 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    public bool DeductItem(string type, int number)
+    // public bool MakeOxygenTank()
+    // {
+    //     foreach (Item item in items)
+    //     {
+    //         if (item.type == ItemType.metal && item.count >= GlobalVariables.instance.MakeOxygenTankSteelNumber)
+    //         {
+    //             foreach (Item wood in items)
+    //             {
+    //                 if (wood.type == ItemType.wood && wood.count >= GlobalVariables.instance.MakeOxygenTankWoodNumber)
+    //                 {
+    //                     if (item.count - GlobalVariables.instance.MakeOxygenTankSteelNumber == 0)
+    //                     {
+    //                         Remove(item);
+    //                     }
+    //                     else
+    //                     {
+    //                         item.count -= GlobalVariables.instance.MakeOxygenTankSteelNumber;
+    //                     }
+    //                     if (wood.count - GlobalVariables.instance.MakeOxygenTankWoodNumber == 0)
+    //                     {
+    //                         Remove(wood);
+    //                     }
+    //                     else
+    //                     {
+    //                         wood.count -= GlobalVariables.instance.MakeOxygenTankWoodNumber;
+    //                     }
+    //                     return true;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    // public bool MakeLadder()
+    // {
+    //     foreach (Item item in items)
+    //     {
+    //         if (item.type == ItemType.wood && item.count >= GlobalVariables.instance.MakeLadderWood)
+    //         {
+    //             if (item.count - GlobalVariables.instance.MakeLadderWood == 0)
+    //             {
+    //                 Remove(item);
+    //             }
+    //             else
+    //             {
+    //                 item.count -= GlobalVariables.instance.MakeLadderWood;
+    //             }
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    // public bool LadderExist()
+    // {
+    //     foreach (Item item in items)
+    //     {
+    //         if (item.type == ItemType.ladder)
+    //         {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    public bool DeductItem(ItemType type, int number)
     {
         foreach (Item item1 in items)
         {
@@ -131,5 +138,11 @@ public class Inventory : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void UpdateInventory(string warning_text)
+    {
+        InventoryUI.instance.UpdateUI();
+        WarningPanel.instance.SendWarningText(warning_text);
     }
 }

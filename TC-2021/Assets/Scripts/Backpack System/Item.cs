@@ -9,17 +9,12 @@ public class Item : InteractableObject
     public string description;
     public Sprite detailImage = null;
     public int count;
+    public ItemType type;
 
-    public string type;
 
-    public virtual void Use()
-    {
-        Debug.Log("Using " + ItemName);
-    }
     public override void Interact()
     {
-        base.Interact();
-        count = Random.Range(5, 8);
+        count = Random.Range(1, 2);
         if (Inventory.instance.AddItem(this))
         {
             ObjectPrefab.SetActive(false);
@@ -27,3 +22,4 @@ public class Item : InteractableObject
         }
     }
 }
+

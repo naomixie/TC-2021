@@ -6,13 +6,16 @@ public class OxygenTank : InteractableObject
 {
     public override void Interact()
     {
-        if (PlayerResources.instance.oxygen_tank_number > PlayerResources.instance.max_oxygen_tank)
+        if (OxygenSystem.instance.current_oxygen_tank_number > GlobalVariables.instance.max_oxygen_tank)
         {
-            // TODO: 提示玩家氧气罐数量到达上限
-            return;
+            WarningPanel.instance.SendWarningText("Maximum amount of oxygen tanks reached.");
         }
-        ++PlayerResources.instance.oxygen_tank_number;
-        PlayerResources.instance.GenerateOxy();
-        Destroy(gameObject);
+        else
+        {
+            ++OxygenSystem.instance.current_oxygen_tank_number;
+            OxygenSystem.instance.UpdateOxygenTankUI();
+            Destroy(gameObject);
+        }
+
     }
 }

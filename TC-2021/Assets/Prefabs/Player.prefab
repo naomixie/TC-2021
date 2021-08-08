@@ -39,7 +39,7 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538209333}
-  serializedVersion: 6
+  serializedVersion: 7
   lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
@@ -2125,6 +2125,62 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+  LifetimeByEmitterSpeedModule:
+    enabled: 0
+    m_Curve:
+      serializedVersion: 2
+      minMaxState: 1
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: -0.8
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.2
+          inSlope: -0.8
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 1
     x:
@@ -3555,19 +3611,20 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
-    serializedVersion: 3
+    serializedVersion: 4
     type: 0
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
-    plane1: {fileID: 0}
-    plane2: {fileID: 0}
-    plane3: {fileID: 0}
-    plane4: {fileID: 0}
-    plane5: {fileID: 0}
+    m_Planes:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -3741,17 +3798,20 @@ ParticleSystem:
     interiorCollisions: 0
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
-    collisionShape1: {fileID: 0}
-    collisionShape2: {fileID: 0}
-    collisionShape3: {fileID: 0}
-    collisionShape4: {fileID: 0}
-    collisionShape5: {fileID: 0}
+    serializedVersion: 2
     inside: 1
     outside: 0
     enter: 0
     exit: 0
+    colliderQueryMode: 0
     radiusScale: 1
+    primitives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -4706,6 +4766,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4748,6 +4809,8 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
+  m_FreeformStretching: 0
+  m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
@@ -4793,7 +4856,7 @@ ParticleSystem:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893212416}
-  serializedVersion: 6
+  serializedVersion: 7
   lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
@@ -6879,6 +6942,62 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+  LifetimeByEmitterSpeedModule:
+    enabled: 0
+    m_Curve:
+      serializedVersion: 2
+      minMaxState: 1
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: -0.8
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 0.2
+          inSlope: -0.8
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    m_Range: {x: 0, y: 1}
   ForceModule:
     enabled: 1
     x:
@@ -8309,19 +8428,20 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
-    serializedVersion: 3
+    serializedVersion: 4
     type: 0
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    plane0: {fileID: 0}
-    plane1: {fileID: 0}
-    plane2: {fileID: 0}
-    plane3: {fileID: 0}
-    plane4: {fileID: 0}
-    plane5: {fileID: 0}
+    m_Planes:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -8495,17 +8615,20 @@ ParticleSystem:
     interiorCollisions: 0
   TriggerModule:
     enabled: 0
-    collisionShape0: {fileID: 0}
-    collisionShape1: {fileID: 0}
-    collisionShape2: {fileID: 0}
-    collisionShape3: {fileID: 0}
-    collisionShape4: {fileID: 0}
-    collisionShape5: {fileID: 0}
+    serializedVersion: 2
     inside: 1
     outside: 0
     enter: 0
     exit: 0
+    colliderQueryMode: 0
     radiusScale: 1
+    primitives:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -9460,6 +9583,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9502,6 +9626,8 @@ ParticleSystemRenderer:
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
+  m_FreeformStretching: 0
+  m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
@@ -9740,6 +9866,7 @@ GameObject:
   - component: {fileID: 4435773468716899049}
   - component: {fileID: 4435773468716899048}
   - component: {fileID: 4435773468716899055}
+  - component: {fileID: 6931809280068361615}
   - component: {fileID: 7475512181071337629}
   - component: {fileID: 4435773468716899054}
   - component: {fileID: 661572522}
@@ -9791,6 +9918,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9815,6 +9943,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4435773468716899048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9846,6 +9975,34 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6931809280068361615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4435773468716899053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d28fc88f17e294d883f66c506c2c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxCapacity: 20
+  MakeOxygenTankSteelNumber: 5
+  MakeOxygenTankWoodNumber: 20
+  MakeLadderWood: 30
+  MaxOxygen: 100
+  OxygenDecreaseRate: 0.5
+  max_oxygen_tank: 5
+  MaxWater: 100
+  WaterAccquireSpeed: 2
+  inspection_length: 5
+  TransportSprite: {fileID: 21300000, guid: 75c91065ef824934887c9d48ec8dada3, type: 3}
+  WaterSprite: {fileID: 21300000, guid: 295d3ff8b801801498c8f65b8304f0a4, type: 3}
+  SpraySprite: {fileID: 21300000, guid: 7668e0276a7ec04498f126daf2f8cbed, type: 3}
+  LadderSprite: {fileID: 21300000, guid: 52af4b3b153eef149a3691a1e864ebae, type: 3}
+  BuildSprite: {fileID: 21300000, guid: 4aad21ae3856b6c419ae264e1e6fb2d0, type: 3}
+  OxygenSprite: {fileID: 21300000, guid: d21f0adcde906ec4ebf37c47b2cde024, type: 3}
 --- !u!114 &7475512181071337629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9858,17 +10015,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fdcc6a0465f60429fb1268ca086647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun_length: 10
   WaterPS: {fileID: 538209335}
   OxygenPS: {fileID: 1893212419}
   TipPanel: {fileID: 0}
   TipImage: {fileID: 0}
-  TransportSprite: {fileID: 21300000, guid: 67c1faf8bf3bb6c4a9c523d3603e1351, type: 3}
-  WaterSprite: {fileID: 21300000, guid: d8387ef35e8e33f4889476763499579f, type: 3}
-  SpraySprite: {fileID: 21300000, guid: 514bb8b2282805b429298e3d68ede3fe, type: 3}
-  LadderSprite: {fileID: 21300000, guid: edf2acdb6f4eadf469e23b9c77717e28, type: 3}
-  BuildSprite: {fileID: 21300000, guid: d777cc90da0e65640ba2f71743d19622, type: 3}
-  OxygenSprite: {fileID: 21300000, guid: 50e5c52cd1aea854db2bc759c831b33d, type: 3}
   LadderPrefab: {fileID: 69436381348408541, guid: a7ed75bdd7844f540b7b4731cc09ac51,
     type: 3}
 --- !u!114 &4435773468716899054
@@ -9891,7 +10041,7 @@ MonoBehaviour:
   runSpeed: 10
   walkSpeed: 4
   music: {fileID: 3435609328858999229}
-  move: {fileID: 8300000, guid: 859ea829a3f0be14eb7cbae619e24511, type: 3}
+  move: {fileID: 8300000, guid: 4dcad290e07240643b368f5a8d769e22, type: 3}
   jump: {fileID: 8300000, guid: ddf919fc176beb7428a38c9f259e1d89, type: 3}
 --- !u!114 &661572522
 MonoBehaviour:
@@ -9905,10 +10055,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13dc5a8ab9729842b0972c36ee7618a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxCapacity: 20
-  MakeOxygenTankSteelNumber: 5
-  MakeOxygenTankWoodNumber: 20
-  MakeLadderWood: 30
   items: []
 --- !u!114 &661572523
 MonoBehaviour:
@@ -9923,12 +10069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastedObject: {fileID: 0}
-  raycastedObjectTransform: {fileID: 0}
-  radius: 8
-  rayLength: 10
-  layerMaskInteract:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!114 &692295239808197366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9941,25 +10081,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4170a0115070b4d830aeb7986c8486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxOxygen: 100
-  OxygenDecreaseRate: 2
-  oxygen_tank_number: 3
-  max_oxygen_tank: 5
-  GenerateOxygenImagePosition: {fileID: 0}
-  OxygenImagePrefab: {fileID: 4331717900369405187, guid: e81817a0f18d3da4782d51db4f325854,
-    type: 3}
-  MaxWater: 3
-  WaterAccquireSpeed: 2
-  OxygenSlider: {fileID: 0}
-  OxygenRate: {fileID: 0}
-  WaterSlider: {fileID: 0}
   ToolImage: {fileID: 0}
   GunImage: {fileID: 21300000, guid: 1fc1765183b55e8438260419519e7ac5, type: 3}
   LadderImage: {fileID: 21300000, guid: e0a97a6d8c3b7c349b1da844d81e9ce8, type: 3}
-  mode: 
-  current_oxygen: 0
-  current_water: 0
-  BloodScreen: {fileID: 0}
+  mode: 0
 --- !u!82 &3435609328858999229
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10113,6 +10238,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10137,6 +10263,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &4435773469325756814
 SphereCollider:
   m_ObjectHideFlags: 0

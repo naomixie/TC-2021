@@ -6,79 +6,68 @@ using UnityEngine.UI;
 public class PlayerInputControl : MonoBehaviour
 {
     private Raycast raycast;
-    public float gun_length = 10f;
     private float timer = 0;
     public ParticleSystem WaterPS;
     public ParticleSystem OxygenPS;
     public GameObject TipPanel;
     public Image TipImage;
-    public Sprite TransportSprite;
-    public Sprite WaterSprite;
-    public Sprite SpraySprite;
-    public Sprite LadderSprite;
-    public Sprite BuildSprite;
-    public Sprite OxygenSprite;
-
 
 
     public GameObject LadderPrefab;
-    // Start is called before the first frame update
+
     void Start()
     {
         raycast = GetComponent<Raycast>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        CheckInteractables();
-        RaycastHit hit;
-        if (Input.GetButtonDown("Interact"))
+        if (!raycast.raycastedObject)
         {
-            // Debug.Log("Pressed");
-            if (raycast.GetInteractableRaycastedObject() != null)
+            CheckInteractables();
+            // Button just pressed
+            if (Input.GetButtonDown("Interact"))
             {
-                raycast.GetInteractableRaycastedObject().GetComponent<InteractableObject>().Interact();
-            }
-            if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, GameObject.FindGameObjectWithTag("MainCamera").transform.forward, out hit, gun_length))
-            {
-                if (hit.collider.tag == "Water")
+                // Debug.Log("Pressed");
+                if (raycast.raycastedObject.tag == "InteractableObject")
                 {
-                    if (PlayerResources.instance.mode != "gun") return;
+                    raycast.raycastedObject.GetComponent<InteractableObject>().Interact();
+                }
+                else if (raycast.raycastedObject.tag == "Water")
+                {
+                    if (PlayerResources.instance.mode != PlayerMode.water_gun) return;
                     timer = 0;
                     WaterPS.gameObject.SetActive(true);
                 }
-                else if (hit.collider.tag == "Oxygen")
+                else if (raycast.raycastedObject.tag == "Oxygen")
                 {
-                    if (PlayerResources.instance.mode != "gun") return;
+                    if (PlayerResources.instance.mode != PlayerMode.oxygen_gun) return;
                     OxygenPS.gameObject.SetActive(true);
                 }
-                else if (hit.collider.tag == "Hills")
+                else if (raycast.raycastedObject.tag == "Hills")
                 {
-                    if (PlayerResources.instance.mode != "ladder") return;
-                    Instantiate(LadderPrefab, hit.collider.transform.position, Quaternion.identity);
-                    Inventory.instance.DeductItem("ladder", 1);
+                    if (PlayerResources.instance.mode != PlayerMode.ladder) return;
+                    Instantiate(LadderPrefab, raycast.raycastedObject.transform.position, Quaternion.identity);
+                    Inventory.instance.DeductItem(ItemType.ladder, 1);
                 }
-                else if (hit.collider.tag == "InitialSpawn")
+                else if (raycast.raycastedObject.tag == "InitialSpawn")
                 {
                     GetComponent<CharacterController>().enabled = false;
-
-                    gameObject.transform.position = hit.collider.GetComponent<Transfer>().where_to_go.position;
+                    gameObject.transform.position = raycast.raycastedObject.GetComponent<Transfer>().where_to_go.position;
                     GetComponent<CharacterController>().enabled = true;
                 }
-                else if (hit.collider.tag == "BuildOxygenTank" || hit.collider.tag == "BuildLadder")
+                else if (raycast.raycastedObject.tag == "Workshop")
                 {
-                    hit.collider.GetComponent<InteractableObject>().Interact();
+                    raycast.raycastedObject.GetComponent<InteractableObject>().Interact();
                 }
+
             }
-        }
-        else if (Input.GetButton("Interact"))
-        {
-            if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, GameObject.FindGameObjectWithTag("MainCamera").transform.forward, out hit, gun_length))
+            // Continue Pressing the button
+            else if (Input.GetButton("Interact"))
             {
-                if (hit.collider.tag == "Water")
+                if (raycast.raycastedObject.tag == "Water")
                 {
-                    if (PlayerResources.instance.current_water == PlayerResources.instance.MaxWater || PlayerResources.instance.mode != "gun")
+                    if (WaterSystem.instance.current_water == GlobalVariables.instance.MaxWater || PlayerResources.instance.mode != PlayerMode.water_gun)
                     {
                         return;
                     }
@@ -86,81 +75,73 @@ public class PlayerInputControl : MonoBehaviour
                     if (timer > 2)
                     {
                         timer = 0;
-                        PlayerResources.instance.current_water++;
+                        WaterSystem.instance.current_water++;
                     }
                     WaterPS.gameObject.SetActive(true);
                 }
-                else if (hit.collider.tag == "Oxygen")
+                else if (raycast.raycastedObject.tag == "Oxygen")
                 {
-                    if (PlayerResources.instance.mode != "gun") return;
-                    PlayerResources.instance.current_oxygen += Time.deltaTime;
+                    if (PlayerResources.instance.mode != PlayerMode.oxygen_gun) return;
+                    OxygenSystem.instance.current_oxygen += Time.deltaTime;
                     OxygenPS.gameObject.SetActive(true);
                 }
+            }
+            // Releasing the button
+            else if (Input.GetButtonUp("Interact"))
+            {
+                timer = 0;
+                WaterPS.gameObject.SetActive(false);
+                OxygenPS.gameObject.SetActive(false);
+            }
 
-
-            }
-        }
-
-        else if (Input.GetButtonUp("Interact"))
-        {
-            timer = 0;
-            WaterPS.gameObject.SetActive(false);
-            OxygenPS.gameObject.SetActive(false);
-        }
-        else if (Input.GetButtonDown("Inventory"))
-        {
-            InventoryUI.instance.InventoryPanel.SetActive(!InventoryUI.instance.InventoryPanel.activeSelf);
-            if (InventoryUI.instance.InventoryPanel.activeSelf)
-            {
-                Cursor.lockState = CursorLockMode.Confined;
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = false;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = true;
-            }
-        }
-    }
-
-    public void CheckInteractables()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, GameObject.FindGameObjectWithTag("MainCamera").transform.forward, out hit, gun_length))
-        {
-            if (hit.collider.tag == "InitialSpawn")
-            {
-                TipPanel.SetActive(true);
-                TipImage.sprite = TransportSprite;
-            }
-            else if (hit.collider.tag == "Water")
-            {
-                TipPanel.SetActive(true);
-                TipImage.sprite = WaterSprite;
-            }
-            else if (hit.collider.tag == "BuildOxygenTank")
-            {
-                TipPanel.SetActive(true);
-                TipImage.sprite = OxygenSprite;
-            }
-            else if (hit.collider.tag == "BuildLadder")
-            {
-                TipPanel.SetActive(true);
-                TipImage.sprite = LadderSprite;
-            }
-            else if (hit.collider.tag == "InteractableObject")
-            {
-                TipPanel.SetActive(true);
-                TipImage.sprite = TransportSprite;
-            }
-            else
-            {
-                TipPanel.SetActive(false);
-            }
         }
         else
         {
             TipPanel.SetActive(false);
+        }
+
+        if (Input.GetButtonDown("Inventory"))
+        {
+            InventoryPanelSwitch();
+        }
+
+    }
+
+    public void CheckInteractables()
+    {
+        if (raycast.raycastedObject.tag == "InitialSpawn")
+        {
+            TipPanel.SetActive(true);
+            TipImage.sprite = GlobalVariables.instance.TransportSprite;
+        }
+        else if (raycast.raycastedObject.tag == "Water")
+        {
+            TipPanel.SetActive(true);
+            TipImage.sprite = GlobalVariables.instance.WaterSprite;
+        }
+        else if (raycast.raycastedObject.tag == "InteractableObject")
+        {
+            TipPanel.SetActive(true);
+            TipImage.sprite = GlobalVariables.instance.TransportSprite;
+        }
+        else
+        {
+            TipPanel.SetActive(false);
+        }
+    }
+
+    public void InventoryPanelSwitch()
+    {
+        InventoryUI.instance.InventoryPanel.SetActive(!InventoryUI.instance.InventoryPanel.activeSelf);
+        if (InventoryUI.instance.InventoryPanel.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = true;
         }
     }
 }

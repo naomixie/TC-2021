@@ -7,11 +7,11 @@ public class WarningPanel : MonoBehaviour
 {
     public static WarningPanel instance;
 
-    private float timer;
     public float Duration = 2;
-
     public GameObject Panel;
     public Text WarningText;
+
+    private float timer;
 
     void Awake()
     {
