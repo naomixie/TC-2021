@@ -38,7 +38,7 @@ public class OxygenSystem : MonoBehaviour
 
         timer = 0;
         BloodScreen.SetActive(false);
-
+        UpdateOxygenTankUI();
     }
 
     // Update is called once per frame

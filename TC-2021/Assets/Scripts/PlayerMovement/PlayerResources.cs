@@ -9,8 +9,8 @@ public class PlayerResources : MonoBehaviour
 
     public Image ToolImage;
 
-    public Sprite GunImage;
-    public Sprite LadderImage;
+    public Sprite GunSprite;
+    public Sprite LadderSprite;
     public PlayerMode mode;
 
 
@@ -29,7 +29,7 @@ public class PlayerResources : MonoBehaviour
     void Start()
     {
         mode = PlayerMode.none;
-        ToolImage.sprite = GunImage;
+        ToolImage.sprite = GunSprite;
 
     }
 
@@ -56,6 +56,7 @@ public class PlayerResources : MonoBehaviour
         //         WaterSlider.gameObject.SetActive(false);
         //     }
         // }
+
     }
 
 

@@ -8,6 +8,7 @@ public class WaterSystem : MonoBehaviour
     public static WaterSystem instance;
 
     public Slider WaterSlider;
+    public Text WaterRate;
 
     public int current_water = 0;
 
@@ -33,5 +34,6 @@ public class WaterSystem : MonoBehaviour
     void Update()
     {
         WaterSlider.value = current_water;
+        WaterRate.text = current_water.ToString() + "%";
     }
 }

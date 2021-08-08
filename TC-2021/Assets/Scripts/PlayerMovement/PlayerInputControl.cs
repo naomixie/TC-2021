@@ -22,7 +22,7 @@ public class PlayerInputControl : MonoBehaviour
 
     void Update()
     {
-        if (!raycast.raycastedObject)
+        if (raycast.raycastedObject != null)
         {
             CheckInteractables();
             // Button just pressed
