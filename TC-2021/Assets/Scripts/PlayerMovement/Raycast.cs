@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Raycast : MonoBehaviour
 {
-    [HideInInspector]
+    // [HideInInspector]
     public GameObject raycastedObject;
 
     private void Update()

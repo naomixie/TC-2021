@@ -90,8 +90,14 @@ public class InventoryUI : MonoBehaviour
     {
         if (selectedSlot != null)
         {
+            detailsImage.gameObject.SetActive(true);
             detailsImage.sprite = selectedSlot.item.detailImage;
             detailsText.text = selectedSlot.item.description;
+        }
+        else
+        {
+            detailsImage.gameObject.SetActive(false);
+            detailsText.text = "";
         }
     }
 

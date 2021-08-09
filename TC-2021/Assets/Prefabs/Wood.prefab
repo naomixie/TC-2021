@@ -46,14 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60eac5a18d6e42147b53704eea6d967e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
   ObjectPrefab: {fileID: 4722742688943856668}
   ItemName: Wood
   icon: {fileID: 21300000, guid: 0e8f86debc3d2894cac34d50006d8057, type: 3}
   description: Basic wood resources, could be used to make many things.
   detailImage: {fileID: 21300000, guid: 50c02c02ccd79e74eb42ce07509fa88a, type: 3}
   count: 0
-  type: wood
+  type: 0
 --- !u!65 &709329993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -65,7 +64,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.2, z: 0.2}
+  m_Size: {x: 1, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!54 &7645928071328663043
 Rigidbody:

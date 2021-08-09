@@ -72,7 +72,7 @@ public class PlayerInputControl : MonoBehaviour
                         return;
                     }
                     timer += Time.deltaTime;
-                    if (timer > 2)
+                    if (timer > GlobalVariables.instance.WaterAccquireSpeed)
                     {
                         timer = 0;
                         WaterSystem.instance.current_water++;

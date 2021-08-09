@@ -36,7 +36,7 @@ public class PlayerResources : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        CheckMode();
 
         // if (Input.GetKeyDown(KeyCode.R))
         // {
@@ -57,6 +57,28 @@ public class PlayerResources : MonoBehaviour
         //     }
         // }
 
+    }
+
+    void CheckMode()
+    {
+        switch (mode)
+        {
+            case PlayerMode.water_gun:
+                ToolImage.sprite = GlobalVariables.instance.WaterSprite;
+                return;
+            case PlayerMode.oxygen_gun:
+                ToolImage.sprite = GlobalVariables.instance.OxygenSprite;
+                return;
+            case PlayerMode.ladder:
+                ToolImage.sprite = GlobalVariables.instance.LadderSprite;
+                return;
+            case PlayerMode.water_spray:
+                ToolImage.sprite = GlobalVariables.instance.SpraySprite;
+                return;
+            default:
+                ToolImage.gameObject.SetActive(false);
+                return;
+        }
     }
 
 
