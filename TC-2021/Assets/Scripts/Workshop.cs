@@ -13,6 +13,11 @@ public class Workshop : InteractableObject
     public GameObject Formula;
     public GameObject GenerateFormulaPosition;
 
+    void Start()
+    {
+        gameObject.tag = "Workshop";
+    }
+
 
     public override void Interact()
     {
