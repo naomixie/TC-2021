@@ -12,10 +12,11 @@ public class Workshop : InteractableObject
     public List<GameObject> GeneratedFormulas;
     public GameObject Formula;
     public GameObject GenerateFormulaPosition;
-
+    public Button CloseWorkshopPanelbutton;
     void Start()
     {
         gameObject.tag = "Workshop";
+        CloseWorkshopPanelbutton.onClick.AddListener(CloseWorkshopPanel);
     }
 
 

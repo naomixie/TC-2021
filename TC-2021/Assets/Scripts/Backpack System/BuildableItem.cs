@@ -26,7 +26,7 @@ public class BuildableItem : Item
         {
             if (!Inventory.instance.FindItem(pair.required_item.type, pair.required_item.count))
             {
-                WarningPanel.instance.SendWarningText("There is not enough " + pair.required_item.ItemName + "to build this item.");
+                // WarningPanel.instance.SendWarningText("There is not enough " + pair.required_item.ItemName + "to build this item.");
                 return false;
             }
         }

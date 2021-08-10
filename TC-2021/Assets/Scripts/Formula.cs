@@ -27,7 +27,7 @@ public class Formula : MonoBehaviour
         foreach (ItemRequirement pair in item.RequiredItems)
         {
             GameObject reqItem = Instantiate(GeneratedRequiredItemsPrefab, GenerateRequiredItemsPosition.transform, false);
-            reqItem.GetComponent<RequiredItemsUI>().SetItem(pair.required_item, pair.required_item.count);
+            reqItem.GetComponent<RequiredItemsUI>().SetItem(pair.required_item, pair.count);
         }
 
         UpdateBuildStatus();
