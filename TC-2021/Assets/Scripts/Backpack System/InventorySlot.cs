@@ -8,14 +8,13 @@ public class InventorySlot : MonoBehaviour
     // public InventoryUI inventoryUI;
     public Image icon;
     public Image Background;
+    public Text AmountText;
 
     public Item item;
 
     public void AddItem(Item newItem)
     {
         item = newItem;
-        icon.sprite = item.icon;
-        icon.enabled = true;
         newItem.gameObject.SetActive(false);
         // Debug.Log("adding item " + item.name + " at slot ");
     }
@@ -23,26 +22,28 @@ public class InventorySlot : MonoBehaviour
     public void ClearSlot()
     {
         item = null;
-        icon.sprite = null;
-        icon.enabled = false;
     }
 
-    //public void UseItem ()
-    //{
-    //    if (!item)
-    //    {
-    //        item.Use();
-    //    }
-    //}
+    public void UpdateInventorySlot()
+    {
+        if (item == null)
+        {
+            AmountText.gameObject.SetActive(false);
+            icon.sprite = null;
+            icon.enabled = false;
+        }
+        else
+        {
+            icon.sprite = item.icon;
+            icon.enabled = true;
+            AmountText.gameObject.SetActive(true);
+            AmountText.text = item.count.ToString();
+        }
+    }
 
     public void OnPointerClick()
     {
-        Debug.Log("TTT");
-
-        if (item != null)
-
-            InventoryUI.instance.OnSlotSelected(this);
-
+        if (item != null) InventoryUI.instance.OnSlotSelected(this);
     }
 
     public void OnPointerEnter()

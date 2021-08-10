@@ -148,5 +148,9 @@ public class PlayerInputControl : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = true;
         }
+        foreach (InventorySlot slot in InventoryUI.instance.slots)
+        {
+            slot.UpdateInventorySlot();
+        }
     }
 }
