@@ -51,6 +51,10 @@ MonoBehaviour:
   detailImage: {fileID: 21300000, guid: d4048a061a5e77643a6beb85a9143237, type: 3}
   count: 1
   type: 0
+  RequiredItems:
+  - count: 5
+    required_item: {fileID: 9115270903846420495, guid: 52fbb084cccb6264ca2eea47b5e657b2,
+      type: 3}
 --- !u!54 &2497480610832239962
 Rigidbody:
   m_ObjectHideFlags: 0

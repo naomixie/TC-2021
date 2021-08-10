@@ -74,3 +74,10 @@ public enum PlayerMode
     ladder,
     water_spray
 }
+
+[System.Serializable]
+public struct ItemRequirement
+{
+    public int count;
+    public Item required_item;
+}

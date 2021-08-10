@@ -24,10 +24,10 @@ public class Formula : MonoBehaviour
         buildableItem = item;
         BuildableItemImage.sprite = buildableItem.icon;
 
-        foreach (var pair in item.RequiredItems)
+        foreach (ItemRequirement pair in item.RequiredItems)
         {
             GameObject reqItem = Instantiate(GeneratedRequiredItemsPrefab, GenerateRequiredItemsPosition.transform, false);
-            reqItem.GetComponent<RequiredItemsUI>().SetItem(pair.Key, pair.Value);
+            reqItem.GetComponent<RequiredItemsUI>().SetItem(pair.required_item, pair.required_item.count);
         }
 
         UpdateBuildStatus();

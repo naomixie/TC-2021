@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BuildableItem : Item
 {
-    public Dictionary<Item, int> RequiredItems = new Dictionary<Item, int>();
+    [SerializeField]
+    public List<ItemRequirement> RequiredItems = new List<ItemRequirement>();
 
     public override void Interact()
     {
@@ -21,11 +22,11 @@ public class BuildableItem : Item
 
     public bool CheckBuild()
     {
-        foreach (var pair in RequiredItems)
+        foreach (ItemRequirement pair in RequiredItems)
         {
-            if (!Inventory.instance.FindItem(pair.Key.type, pair.Value))
+            if (!Inventory.instance.FindItem(pair.required_item.type, pair.required_item.count))
             {
-                WarningPanel.instance.SendWarningText("There is not enough " + pair.Key + "to build this item.");
+                WarningPanel.instance.SendWarningText("There is not enough " + pair.required_item.ItemName + "to build this item.");
                 return false;
             }
         }
@@ -36,7 +37,7 @@ public class BuildableItem : Item
     {
         foreach (var pair in RequiredItems)
         {
-            Inventory.instance.DeductItem(pair.Key.type, pair.Value);
+            Inventory.instance.DeductItem(pair.required_item.type, pair.required_item.count);
         }
         count = 1;
         Inventory.instance.AddItem(this);
