@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildableItem : Item
 {
-    public Dictionary<ItemType, int> RequiredItems = new Dictionary<ItemType, int>();
+    public Dictionary<Item, int> RequiredItems = new Dictionary<Item, int>();
 
     public override void Interact()
     {
@@ -23,7 +23,7 @@ public class BuildableItem : Item
     {
         foreach (var pair in RequiredItems)
         {
-            if (!Inventory.instance.FindItem(pair.Key, pair.Value))
+            if (!Inventory.instance.FindItem(pair.Key.type, pair.Value))
             {
                 WarningPanel.instance.SendWarningText("There is not enough " + pair.Key + "to build this item.");
                 return false;
@@ -36,7 +36,7 @@ public class BuildableItem : Item
     {
         foreach (var pair in RequiredItems)
         {
-            Inventory.instance.DeductItem(pair.Key, pair.Value);
+            Inventory.instance.DeductItem(pair.Key.type, pair.Value);
         }
         count = 1;
         Inventory.instance.AddItem(this);

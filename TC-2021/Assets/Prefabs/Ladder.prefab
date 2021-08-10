@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 69436381348408543}
-  - component: {fileID: 69436381348408542}
+  - component: {fileID: 6577079571991879136}
   m_Layer: 0
   m_Name: Ladder
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &69436381348408542
+--- !u!114 &6577079571991879136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,17 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 69436381348408541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60eac5a18d6e42147b53704eea6d967e, type: 3}
+  m_Script: {fileID: 11500000, guid: b86329c343a8a8c4e94eb531a7c41396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
   ObjectPrefab: {fileID: 880411760489238224}
   ItemName: Ladder
   icon: {fileID: 21300000, guid: e0a97a6d8c3b7c349b1da844d81e9ce8, type: 3}
   description: A basic ladder made by wood. It might be used to reach high places.
   detailImage: {fileID: 21300000, guid: d4048a061a5e77643a6beb85a9143237, type: 3}
   count: 1
-  type: ladder
+  type: 0
 --- !u!54 &2497480610832239962
 Rigidbody:
   m_ObjectHideFlags: 0

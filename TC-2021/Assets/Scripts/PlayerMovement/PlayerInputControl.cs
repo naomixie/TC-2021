@@ -124,6 +124,11 @@ public class PlayerInputControl : MonoBehaviour
             TipPanel.SetActive(true);
             TipImage.sprite = GlobalVariables.instance.TransportSprite;
         }
+        else if (raycast.raycastedObject.tag == "Workshop")
+        {
+            TipPanel.SetActive(true);
+            TipImage.sprite = GlobalVariables.instance.BuildSprite;
+        }
         else
         {
             TipPanel.SetActive(false);

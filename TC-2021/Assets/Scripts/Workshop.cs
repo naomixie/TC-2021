@@ -25,6 +25,7 @@ public class Workshop : InteractableObject
         WorkshopPanel.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = false;
+        GenerateWorkshopPanel();
     }
 
     public void GenerateWorkshopPanel()
@@ -36,6 +37,7 @@ public class Workshop : InteractableObject
         foreach (BuildableItem buildableItem in buildableItems)
         {
             GameObject formula = Instantiate(Formula, GenerateFormulaPosition.transform, false);
+            formula.GetComponent<Formula>().GenerateRequiredItemsUI(buildableItem);
             GeneratedFormulas.Add(formula);
             // formula.setformula
         }
