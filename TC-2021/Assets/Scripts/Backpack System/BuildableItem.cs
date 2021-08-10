@@ -24,7 +24,7 @@ public class BuildableItem : Item
     {
         foreach (ItemRequirement pair in RequiredItems)
         {
-            if (!Inventory.instance.FindItem(pair.required_item.type, pair.required_item.count))
+            if (!Inventory.instance.FindItem(pair.required_item.type, pair.count))
             {
                 // WarningPanel.instance.SendWarningText("There is not enough " + pair.required_item.ItemName + "to build this item.");
                 return false;
@@ -37,7 +37,7 @@ public class BuildableItem : Item
     {
         foreach (var pair in RequiredItems)
         {
-            Inventory.instance.DeductItem(pair.required_item.type, pair.required_item.count);
+            Inventory.instance.DeductItem(pair.required_item.type, pair.count);
         }
         count = 1;
         Inventory.instance.AddItem(this);
