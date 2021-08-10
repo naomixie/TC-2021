@@ -15,7 +15,7 @@ public class Item : InteractableObject
     public override void Interact()
     {
         count = Random.Range(1, 2);
-        if (Inventory.instance.AddItem(this))
+        if (Inventory.instance.AddItem(this, count))
         {
             ObjectPrefab.SetActive(false);
             GetComponent<BoxCollider>().enabled = false;

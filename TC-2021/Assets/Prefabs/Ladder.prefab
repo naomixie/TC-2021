@@ -49,10 +49,10 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e0a97a6d8c3b7c349b1da844d81e9ce8, type: 3}
   description: A basic ladder made by wood. It might be used to reach high places.
   detailImage: {fileID: 21300000, guid: d4048a061a5e77643a6beb85a9143237, type: 3}
-  count: 2
+  count: 1
   type: 0
   RequiredItems:
-  - count: 5
+  - count: 1
     required_item: {fileID: 9115270903846420495, guid: 52fbb084cccb6264ca2eea47b5e657b2,
       type: 3}
 --- !u!54 &2497480610832239962

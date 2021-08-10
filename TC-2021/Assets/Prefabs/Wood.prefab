@@ -52,7 +52,7 @@ MonoBehaviour:
   description: Basic wood resources, could be used to make many things.
   detailImage: {fileID: 21300000, guid: 50c02c02ccd79e74eb42ce07509fa88a, type: 3}
   count: 0
-  type: 0
+  type: 2
 --- !u!65 &709329993
 BoxCollider:
   m_ObjectHideFlags: 0

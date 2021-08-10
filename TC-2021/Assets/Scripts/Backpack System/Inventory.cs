@@ -17,22 +17,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool AddItem(Item item)
+    public bool AddItem(Item item, int amount)
     {
         // Debug.Log("Adding :" + item.ItemName);
         foreach (Item it in items)
         {
             if (it.type == item.type)
             {
-                it.count += item.count;
-                UpdateInventory("Added " + item.count + " " + item.ItemName + " to inventory.");
+                it.count += amount;
+                UpdateInventory("Added " + amount + " " + item.ItemName + " to inventory.");
                 return true;
             }
         }
         if (items.Count < GlobalVariables.instance.MaxCapacity)
         {
+            item.count = amount;
             items.Add(item);
-            UpdateInventory("Added " + item.count + " " + item.ItemName + " to inventory.");
+            UpdateInventory("Added " + amount + " " + item.ItemName + " to inventory.");
             return true;
         }
         return false;
@@ -41,6 +42,7 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         items.Remove(item);
+        Debug.Log("Removed " + item.ItemName + " from inventory.");
         UpdateInventory("Removed " + item.ItemName + " from inventory.");
     }
 
@@ -48,79 +50,14 @@ public class Inventory : MonoBehaviour
     {
         foreach (Item item in items)
         {
-            if (item.type == type && count >= item.count)
+            if (item.type == type && item.count >= count)
             {
+                Debug.Log("Inv has " + item.count + "\t Req is" + count);
                 return true;
             }
         }
         return false;
     }
-
-    // public bool MakeOxygenTank()
-    // {
-    //     foreach (Item item in items)
-    //     {
-    //         if (item.type == ItemType.metal && item.count >= GlobalVariables.instance.MakeOxygenTankSteelNumber)
-    //         {
-    //             foreach (Item wood in items)
-    //             {
-    //                 if (wood.type == ItemType.wood && wood.count >= GlobalVariables.instance.MakeOxygenTankWoodNumber)
-    //                 {
-    //                     if (item.count - GlobalVariables.instance.MakeOxygenTankSteelNumber == 0)
-    //                     {
-    //                         Remove(item);
-    //                     }
-    //                     else
-    //                     {
-    //                         item.count -= GlobalVariables.instance.MakeOxygenTankSteelNumber;
-    //                     }
-    //                     if (wood.count - GlobalVariables.instance.MakeOxygenTankWoodNumber == 0)
-    //                     {
-    //                         Remove(wood);
-    //                     }
-    //                     else
-    //                     {
-    //                         wood.count -= GlobalVariables.instance.MakeOxygenTankWoodNumber;
-    //                     }
-    //                     return true;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return false;
-    // }
-
-    // public bool MakeLadder()
-    // {
-    //     foreach (Item item in items)
-    //     {
-    //         if (item.type == ItemType.wood && item.count >= GlobalVariables.instance.MakeLadderWood)
-    //         {
-    //             if (item.count - GlobalVariables.instance.MakeLadderWood == 0)
-    //             {
-    //                 Remove(item);
-    //             }
-    //             else
-    //             {
-    //                 item.count -= GlobalVariables.instance.MakeLadderWood;
-    //             }
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-
-    // public bool LadderExist()
-    // {
-    //     foreach (Item item in items)
-    //     {
-    //         if (item.type == ItemType.ladder)
-    //         {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
 
     public bool DeductItem(ItemType type, int number)
     {
