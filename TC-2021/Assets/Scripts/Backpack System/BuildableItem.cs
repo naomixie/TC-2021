@@ -26,7 +26,7 @@ public class BuildableItem : Item
         {
             if (!Inventory.instance.FindItem(pair.required_item.type, pair.count))
             {
-                Debug.Log("There is not enough " + pair.required_item.ItemName + " in inventory.");
+                // Debug.Log("There is not enough " + pair.required_item.ItemName + " in inventory.");
                 // WarningPanel.instance.SendWarningText("There is not enough " + pair.required_item.ItemName + "to build this item.");
                 return false;
             }
@@ -39,7 +39,7 @@ public class BuildableItem : Item
     {
         foreach (ItemRequirement pair in RequiredItems)
         {
-            Debug.Log("Deduct item: " + pair.required_item.type + "\tDeduct amount: " + pair.count);
+            // Debug.Log("Deduct item: " + pair.required_item.type + "\tDeduct amount: " + pair.count);
             Inventory.instance.DeductItem(pair.required_item.type, pair.count);
         }
         Inventory.instance.AddItem(this, 1);

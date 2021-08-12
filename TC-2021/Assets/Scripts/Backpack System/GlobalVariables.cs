@@ -81,3 +81,20 @@ public struct ItemRequirement
     public int count;
     public Item required_item;
 }
+
+public enum SoundType
+{
+    move,
+    jump,
+    absorb_water,
+    absorb_oxygen,
+    pick_up_item,
+    build_item,
+    low_oxygen_rate,
+}
+
+public struct SoundEffect
+{
+    public SoundType soundType;
+    public AudioClip soundClip;
+}

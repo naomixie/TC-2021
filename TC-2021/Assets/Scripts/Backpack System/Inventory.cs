@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
             if (it.type == item.type)
             {
                 it.count += amount;
-                UpdateInventory("Added " + amount + " " + item.ItemName + " to inventory.");
+                // UpdateInventory("Added " + amount + " " + item.ItemName + " to inventory.");
                 return true;
             }
         }
@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
         {
             item.count = amount;
             items.Add(item);
-            UpdateInventory("Added " + amount + " " + item.ItemName + " to inventory.");
+            // UpdateInventory("Added " + amount + " " + item.ItemName + " to inventory.");
             return true;
         }
         return false;
@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item)
     {
         items.Remove(item);
-        Debug.Log("Removed " + item.ItemName + " from inventory.");
+        // Debug.Log("Removed " + item.ItemName + " from inventory.");
         UpdateInventory("Removed " + item.ItemName + " from inventory.");
     }
 
@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
         {
             if (item.type == type && item.count >= count)
             {
-                Debug.Log("Inv has " + item.count + "\t Req is" + count);
+                // Debug.Log("Inv has " + item.count + "\t Req is" + count);
                 return true;
             }
         }
