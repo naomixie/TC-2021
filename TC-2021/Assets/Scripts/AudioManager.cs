@@ -4,27 +4,48 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager instance;
     public List<SoundEffect> soundEffects = new List<SoundEffect>();
 
+    [SerializeField]
+    private List<SoundEffect> PlayingSoundEffects = new List<SoundEffect>();
 
-    public void PlaySoundEffect(SoundType sound)
+    void Awake()
     {
-        SoundEffect soundEffect = FindSoundEffect(sound);
-        AudioSource audio = GameObject.FindGameObjectWithTag("Player").AddComponent<AudioSource>();
-        audio.clip = soundEffect.soundClip;
-        audio.Play();
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
-    public SoundEffect FindSoundEffect(SoundType soundType)
+    void Start()
+    {
+        GenerateAudioSources();
+    }
+
+    public void GenerateAudioSources()
     {
         foreach (SoundEffect soundEffect in soundEffects)
         {
-            if (soundEffect.soundType == soundType)
+            AudioSource audio = GameObject.FindGameObjectWithTag("Player").AddComponent<AudioSource>();
+            audio.clip = soundEffect.soundClip;
+            SoundEffect n_sound = new SoundEffect(soundEffect.soundType, soundEffect.soundClip, audio);
+            PlayingSoundEffects.Add(n_sound);
+        }
+    }
+
+    // play_loop means to play it while it stops playing, example use when moving
+    public void PlaySoundEffect(SoundType sound, bool play_loop)
+    {
+        foreach (SoundEffect soundEffect in PlayingSoundEffects)
+        {
+            if (soundEffect.soundType == sound)
             {
-                return soundEffect;
+                if ((play_loop && !soundEffect.soundAudio.isPlaying) || !play_loop)
+                {
+                    soundEffect.soundAudio.Play();
+                }
             }
         }
-        Debug.Log("Error: SoundEffect not found/registered.");
-        return soundEffects[0];
     }
 }

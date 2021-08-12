@@ -93,8 +93,18 @@ public enum SoundType
     low_oxygen_rate,
 }
 
+[System.Serializable]
 public struct SoundEffect
 {
     public SoundType soundType;
     public AudioClip soundClip;
+    public AudioSource soundAudio;
+
+    public SoundEffect(SoundType soundType, AudioClip clip, AudioSource source)
+    {
+        this.soundType = soundType;
+        this.soundClip = clip;
+        this.soundAudio = source;
+    }
+
 }

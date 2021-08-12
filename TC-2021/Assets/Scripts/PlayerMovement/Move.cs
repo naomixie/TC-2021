@@ -28,10 +28,6 @@ public class Move : MonoBehaviour
     // 用于存储当前的角色控件
     private CharacterController character;
 
-    //音源AudioSource相当于播放器，而音效AudioClip相当于磁带
-    public AudioSource music;
-    public AudioClip move;
-    public AudioClip jump;//这里我要给主角添加跳跃的音效
 
     // 在被加载时执行
     void Start()
@@ -40,13 +36,6 @@ public class Move : MonoBehaviour
         character = GetComponent<CharacterController>();
         verSpeed = minFall;
         moveSpeed = walkSpeed;
-        //给对象添加一个AudioSource组件
-        music = gameObject.GetComponent<AudioSource>();
-        music = gameObject.GetComponent<AudioSource>();
-        //加载音效文件，我把跳跃的音频文件命名为jump
-        jump = Resources.Load<AudioClip>("music/jump");
-        //加载音效文件，我把跳跃的音频文件命名为move
-        move = Resources.Load<AudioClip>("music/move");
     }
     // 每更新一帧时执行
     void Update()
@@ -68,14 +57,8 @@ public class Move : MonoBehaviour
             movement = Vector3.ClampMagnitude(movement, moveSpeed);
             // 将移动的信息转化为以摄像机为全局坐标的位置，即保证你向前走一定是摄像机的视角方向
             movement = target.TransformDirection(movement);
-            //把音源music的音效设置为jump
-            music.clip = move;
-            //播放音效
-            if (!music.isPlaying)
-            {
-                music.Play();
 
-            }
+            AudioManager.instance.PlaySoundEffect(SoundType.move, true);
         }
         // 当按下左 shift 是跟换速度
         if (Input.GetKey(KeyCode.LeftShift))
@@ -93,10 +76,7 @@ public class Move : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 verSpeed = jumpSpeed;
-                //把音源music的音效设置为jump
-                music.clip = jump;
-                //播放音效
-                music.Play();
+                AudioManager.instance.PlaySoundEffect(SoundType.jump, false);
             }
             else
             {
