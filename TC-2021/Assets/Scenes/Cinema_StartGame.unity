@@ -2022,6 +2022,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 919132148570351604, guid: ee385de24d8afb445ad81ed99233fb9e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3026313093747185240, guid: ee385de24d8afb445ad81ed99233fb9e,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2752,6 +2757,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 825360651}
+  - component: {fileID: 825360653}
+  - component: {fileID: 825360652}
   m_Layer: 0
   m_Name: Cinema
   m_TagString: Untagged
@@ -2775,6 +2782,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825360652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825360650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98d1a1b3a765634a998f4b8852377b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &825360653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825360650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 0f3dc58635f8d5049b7d269b8a9da181, type: 2}
+    - {fileID: 11400000, guid: 85c536eeb832a0444b39fcc27db006a1, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls: []
+    - m_PersistentCalls:
+        m_Calls: []
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 825360652}
+          m_TargetAssemblyTypeName: CinemaController, Assembly-CSharp
+          m_MethodName: EnablePlayer
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &833703620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3231,6 +3286,8 @@ PlayableDirector:
     value: {fileID: 1316238763}
   - key: {fileID: 4835501723018078649, guid: 8fe05f7433198984997a6fb7e78e6a41, type: 2}
     value: {fileID: 2059652535}
+  - key: {fileID: 3318462872920092089, guid: 8fe05f7433198984997a6fb7e78e6a41, type: 2}
+    value: {fileID: 825360653}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1088552605

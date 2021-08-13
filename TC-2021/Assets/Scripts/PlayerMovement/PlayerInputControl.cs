@@ -18,6 +18,7 @@ public class PlayerInputControl : MonoBehaviour
     void Start()
     {
         raycast = GetComponent<Raycast>();
+        AudioManager.instance.GenerateAudioSources();
     }
 
     void Update()

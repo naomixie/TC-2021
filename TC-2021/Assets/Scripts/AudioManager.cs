@@ -18,11 +18,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        GenerateAudioSources();
-    }
-
     public void GenerateAudioSources()
     {
         foreach (SoundEffect soundEffect in soundEffects)

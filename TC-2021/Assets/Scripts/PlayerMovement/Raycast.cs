@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Raycast : MonoBehaviour
 {
-    // [HideInInspector]
     public GameObject raycastedObject;
 
-    private void Update()
+    void Update()
     {
+        if (Camera.main == null) return;
         RaycastHit hit;
-        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, GameObject.FindGameObjectWithTag("MainCamera").transform.forward, out hit, GlobalVariables.instance.inspection_length))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, GlobalVariables.instance.inspection_length))
         {
             raycastedObject = hit.collider.gameObject;
         }
