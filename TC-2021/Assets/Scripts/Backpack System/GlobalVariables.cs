@@ -123,3 +123,31 @@ public struct Panel
     public GameObject PanelObject;
     public PanelType type;
 }
+
+public class GlobalFunctions
+{
+    public static GlobalFunctions instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    public void EnablePlayerMovements()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Camera.main.GetComponent<CameraTrun>().enabled = true;
+        PlayerInputControl.instance.gameObject.GetComponent<CharacterController>().enabled = true;
+    }
+
+    public void DisablePlayerMovements()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Camera.main.GetComponent<CameraTrun>().enabled = false;
+        PlayerInputControl.instance.gameObject.GetComponent<CharacterController>().enabled = false;
+    }
+}
+

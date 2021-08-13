@@ -8,7 +8,8 @@ public class DialoguePanel : MonoBehaviour
     public GameObject Panel;
     public Text DialogueText;
     //储存中间值
-    public List<string> DisplayText;
+    public List<string> DisplayText = null;
+    public int print_progress;
     private float timer;
     private bool isPrint = false;
     public float perCharSpeed = 1;
@@ -28,17 +29,40 @@ public class DialoguePanel : MonoBehaviour
         printText();
     }
 
+    public void StartPrintText(InspectableObject inspectableObject)
+    {
+        if (DisplayText == null)
+        {
+            print_progress = 0;
+            DisplayText = inspectableObject.InspectDescription;
+            DisplayDialogueText(DisplayText[print_progress]);
+        }
+    }
+
+    public void PrintNextText()
+    {
+        // Print to the end of texts
+        if (DisplayText == null) return;
+        if (print_progress == DisplayText.Count)
+        {
+            DisplayText = null;
+            PanelManager.instance.Showpanel(PanelType.HUD);
+            isPrint = false;
+        }
+        // Continue printing the next part
+        else
+        {
+            ++print_progress;
+            DisplayDialogueText(DisplayText[print_progress]);
+        }
+    }
+
     public void DisplayDialogueText(string dialogue)
     {
-        Panel.SetActive(true);
+        PanelManager.instance.Showpanel(PanelType.Dialogue);
         isPrint = true;
         timer = 0;
         current_print_text = dialogue;
-    }
-
-    public void CloseDialoguePanel()
-    {
-        Panel.SetActive(false);
     }
 
     void printText()

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerInputControl : MonoBehaviour
 {
+    public static PlayerInputControl instance;
     private Raycast raycast;
     private float timer = 0;
     public ParticleSystem WaterPS;
@@ -15,6 +16,14 @@ public class PlayerInputControl : MonoBehaviour
 
     public GameObject LadderPrefab;
 
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
         raycast = GetComponent<Raycast>();
@@ -23,6 +32,10 @@ public class PlayerInputControl : MonoBehaviour
 
     void Update()
     {
+        if (DialoguePanel.instance.gameObject.activeSelf && Input.anyKeyDown)
+        {
+            DialoguePanel.instance.PrintNextText();
+        }
         if (raycast.raycastedObject != null)
         {
             CheckInteractables();
@@ -138,25 +151,13 @@ public class PlayerInputControl : MonoBehaviour
 
     public void InventoryPanelSwitch()
     {
-        // If other panel is active currently
-        if (Workshop.instance.WorkshopPanel.activeSelf)
-        {
-            InventoryUI.instance.InventoryPanel.SetActive(false);
-        }
-        else
-        {
-            InventoryUI.instance.InventoryPanel.SetActive(!InventoryUI.instance.InventoryPanel.activeSelf);
-        }
-
         if (InventoryUI.instance.InventoryPanel.activeSelf)
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = false;
+            PanelManager.instance.Showpanel(PanelType.HUD);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = true;
+            PanelManager.instance.Showpanel(PanelType.Inventory);
         }
         foreach (InventorySlot slot in InventoryUI.instance.slots)
         {

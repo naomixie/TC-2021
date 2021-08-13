@@ -26,15 +26,13 @@ public class Workshop : InteractableObject
     void Start()
     {
         gameObject.tag = "Workshop";
-        CloseWorkshopPanelbutton.onClick.AddListener(CloseWorkshopPanel);
+        CloseWorkshopPanelbutton.onClick.AddListener(() => PanelManager.instance.Showpanel(PanelType.HUD));
     }
 
     public override void Interact()
     {
         // 打开合成面板
-        WorkshopPanel.SetActive(true);
-        Cursor.lockState = CursorLockMode.Confined;
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraTrun>().enabled = false;
+        PanelManager.instance.Showpanel(PanelType.Workshop);
         GenerateWorkshopPanel();
     }
 
@@ -49,7 +47,6 @@ public class Workshop : InteractableObject
             GameObject formula = Instantiate(Formula, GenerateFormulaPosition.transform, false);
             formula.GetComponent<Formula>().GenerateRequiredItemsUI(buildableItem);
             GeneratedFormulas.Add(formula);
-            // formula.setformula
         }
     }
 

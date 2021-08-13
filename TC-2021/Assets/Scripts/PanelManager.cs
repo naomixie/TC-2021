@@ -33,5 +33,14 @@ public class PanelManager : MonoBehaviour
                 panel.PanelObject.SetActive(true);
             }
         }
+
+        if (panelType != PanelType.HUD)
+        {
+            GlobalFunctions.instance.DisablePlayerMovements();
+        }
+        else
+        {
+            GlobalFunctions.instance.EnablePlayerMovements();
+        }
     }
 }

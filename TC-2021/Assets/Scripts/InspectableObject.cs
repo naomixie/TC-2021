@@ -9,7 +9,6 @@ public class InspectableObject : InteractableObject
     public override void Interact()
     {
         base.Interact();
-
-
+        DialoguePanel.instance.StartPrintText(this);
     }
 }
