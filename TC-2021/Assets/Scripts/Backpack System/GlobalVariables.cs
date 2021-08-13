@@ -108,3 +108,18 @@ public struct SoundEffect
     }
 
 }
+
+public enum PanelType
+{
+    Inventory,
+    HUD,
+    Workshop,
+    Dialogue
+}
+
+[System.Serializable]
+public struct Panel
+{
+    public GameObject PanelObject;
+    public PanelType type;
+}

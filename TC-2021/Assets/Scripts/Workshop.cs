@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Workshop : InteractableObject
 {
+    public static Workshop instance;
     [Header("Items that could be built in this workshop")]
     public List<BuildableItem> buildableItems;
 
@@ -13,12 +14,20 @@ public class Workshop : InteractableObject
     public GameObject Formula;
     public GameObject GenerateFormulaPosition;
     public Button CloseWorkshopPanelbutton;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
         gameObject.tag = "Workshop";
         CloseWorkshopPanelbutton.onClick.AddListener(CloseWorkshopPanel);
     }
-
 
     public override void Interact()
     {

@@ -138,7 +138,16 @@ public class PlayerInputControl : MonoBehaviour
 
     public void InventoryPanelSwitch()
     {
-        InventoryUI.instance.InventoryPanel.SetActive(!InventoryUI.instance.InventoryPanel.activeSelf);
+        // If other panel is active currently
+        if (Workshop.instance.WorkshopPanel.activeSelf)
+        {
+            InventoryUI.instance.InventoryPanel.SetActive(false);
+        }
+        else
+        {
+            InventoryUI.instance.InventoryPanel.SetActive(!InventoryUI.instance.InventoryPanel.activeSelf);
+        }
+
         if (InventoryUI.instance.InventoryPanel.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Confined;
