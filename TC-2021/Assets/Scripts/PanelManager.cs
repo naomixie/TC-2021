@@ -22,7 +22,7 @@ public class PanelManager : MonoBehaviour
 
     public void Showpanel(PanelType panelType)
     {
-        Debug.Log("Opening Panel: " + panelType);
+        // Debug.Log("Opening Panel: " + panelType);
         foreach (Panel panel in Panels)
         {
             if (panel.type != panelType)

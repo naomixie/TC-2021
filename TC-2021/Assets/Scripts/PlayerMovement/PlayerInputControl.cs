@@ -34,8 +34,14 @@ public class PlayerInputControl : MonoBehaviour
     {
         if (DialoguePanel.instance.Panel.activeSelf && Input.anyKeyDown)
         {
-            Debug.Log("Error");
-            DialoguePanel.instance.PrintNextText();
+            if (DialoguePanel.instance.isPrint)
+            {
+                DialoguePanel.instance.InstantPrintText();
+            }
+            else
+            {
+                DialoguePanel.instance.PrintNextText();
+            }
         }
         else if (raycast.raycastedObject != null)
         {

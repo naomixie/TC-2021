@@ -11,7 +11,7 @@ public class DialoguePanel : MonoBehaviour
     public List<string> DisplayText = null;
     public int print_progress;
     private float timer;
-    private bool isPrint = false;
+    public bool isPrint = false;
     public float perCharSpeed = 1;
 
     private string current_print_text;
@@ -53,6 +53,7 @@ public class DialoguePanel : MonoBehaviour
         {
             Debug.Log("Print ends");
             DisplayText = null;
+            current_print_text = "";
             PanelManager.instance.Showpanel(PanelType.HUD);
             isPrint = false;
         }
@@ -71,6 +72,12 @@ public class DialoguePanel : MonoBehaviour
         isPrint = true;
         timer = 0;
         current_print_text = dialogue;
+    }
+
+    public void InstantPrintText()
+    {
+        DialogueText.text = current_print_text;
+        isPrint = false;
     }
 
     void printText()
