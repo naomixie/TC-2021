@@ -31,9 +31,9 @@ public class OxygenSystem : MonoBehaviour
 
     void Start()
     {
-        current_oxygen = GlobalVariables.instance.MaxOxygen;
+        current_oxygen = Global.instance.MaxOxygen;
         OxygenSlider.value = current_oxygen;
-        OxygenSlider.maxValue = GlobalVariables.instance.MaxOxygen;
+        OxygenSlider.maxValue = Global.instance.MaxOxygen;
         OxygenSlider.minValue = 0;
 
         timer = 0;
@@ -52,7 +52,7 @@ public class OxygenSystem : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 1)
         {
-            current_oxygen -= GlobalVariables.instance.OxygenDecreaseRate;
+            current_oxygen -= Global.instance.OxygenDecreaseRate;
             timer = 0;
             OxygenSlider.value = current_oxygen;
             OxygenRate.text = OxygenSlider.value.ToString() + "%";
@@ -74,7 +74,7 @@ public class OxygenSystem : MonoBehaviour
                 else
                 {
                     --current_oxygen_tank_number;
-                    current_oxygen = GlobalVariables.instance.MaxOxygen;
+                    current_oxygen = Global.instance.MaxOxygen;
                     UpdateOxygenTankUI();
                 }
             }

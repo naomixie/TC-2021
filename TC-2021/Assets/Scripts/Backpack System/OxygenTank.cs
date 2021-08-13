@@ -6,7 +6,7 @@ public class OxygenTank : InteractableObject
 {
     public override void Interact()
     {
-        if (OxygenSystem.instance.current_oxygen_tank_number > GlobalVariables.instance.max_oxygen_tank)
+        if (OxygenSystem.instance.current_oxygen_tank_number > Global.instance.max_oxygen_tank)
         {
             WarningPanel.instance.SendWarningText("Maximum amount of oxygen tanks reached.");
         }

@@ -10,7 +10,7 @@ public class Raycast : MonoBehaviour
     {
         if (Camera.main == null) return;
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, GlobalVariables.instance.inspection_length))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Global.instance.inspection_length))
         {
             raycastedObject = hit.collider.gameObject;
         }

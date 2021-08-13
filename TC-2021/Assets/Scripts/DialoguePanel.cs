@@ -24,6 +24,11 @@ public class DialoguePanel : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        DisplayText = null;
+    }
+
     void Update()
     {
         printText();
@@ -33,6 +38,7 @@ public class DialoguePanel : MonoBehaviour
     {
         if (DisplayText == null)
         {
+            Debug.Log("Start Printint Text");
             print_progress = 0;
             DisplayText = inspectableObject.InspectDescription;
             DisplayDialogueText(DisplayText[print_progress]);

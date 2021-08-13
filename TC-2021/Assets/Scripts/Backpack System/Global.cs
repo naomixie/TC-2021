@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalVariables : MonoBehaviour
+public class Global : MonoBehaviour
 {
-    public static GlobalVariables instance;
+    public static Global instance;
 
     # region Inventory
     public int MaxCapacity = 20;
@@ -47,6 +47,22 @@ public class GlobalVariables : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public void EnablePlayerMovements()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        if (Camera.main != null)
+            Camera.main.GetComponent<CameraTrun>().enabled = true;
+        GetComponent<CharacterController>().enabled = true;
+    }
+
+    public void DisablePlayerMovements()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        if (Camera.main != null)
+            Camera.main.GetComponent<CameraTrun>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
     }
 }
 
@@ -122,32 +138,5 @@ public struct Panel
 {
     public GameObject PanelObject;
     public PanelType type;
-}
-
-public class GlobalFunctions
-{
-    public static GlobalFunctions instance;
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-
-    public void EnablePlayerMovements()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Camera.main.GetComponent<CameraTrun>().enabled = true;
-        PlayerInputControl.instance.gameObject.GetComponent<CharacterController>().enabled = true;
-    }
-
-    public void DisablePlayerMovements()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-        Camera.main.GetComponent<CameraTrun>().enabled = false;
-        PlayerInputControl.instance.gameObject.GetComponent<CharacterController>().enabled = false;
-    }
 }
 

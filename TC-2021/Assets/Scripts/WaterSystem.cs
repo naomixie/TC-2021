@@ -25,7 +25,7 @@ public class WaterSystem : MonoBehaviour
     void Start()
     {
         current_water = 0;
-        WaterSlider.maxValue = GlobalVariables.instance.MaxWater;
+        WaterSlider.maxValue = Global.instance.MaxWater;
         WaterSlider.value = current_water;
         WaterSlider.minValue = 0;
     }

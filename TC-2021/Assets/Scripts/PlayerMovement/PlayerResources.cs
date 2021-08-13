@@ -64,16 +64,16 @@ public class PlayerResources : MonoBehaviour
         switch (mode)
         {
             case PlayerMode.water_gun:
-                ToolImage.sprite = GlobalVariables.instance.WaterSprite;
+                ToolImage.sprite = Global.instance.WaterSprite;
                 return;
             case PlayerMode.oxygen_gun:
-                ToolImage.sprite = GlobalVariables.instance.OxygenSprite;
+                ToolImage.sprite = Global.instance.OxygenSprite;
                 return;
             case PlayerMode.ladder:
-                ToolImage.sprite = GlobalVariables.instance.LadderSprite;
+                ToolImage.sprite = Global.instance.LadderSprite;
                 return;
             case PlayerMode.water_spray:
-                ToolImage.sprite = GlobalVariables.instance.SpraySprite;
+                ToolImage.sprite = Global.instance.SpraySprite;
                 return;
             default:
                 ToolImage.gameObject.SetActive(false);

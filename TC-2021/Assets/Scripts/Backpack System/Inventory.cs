@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
                 return true;
             }
         }
-        if (items.Count < GlobalVariables.instance.MaxCapacity)
+        if (items.Count < Global.instance.MaxCapacity)
         {
             item.count = amount;
             items.Add(item);

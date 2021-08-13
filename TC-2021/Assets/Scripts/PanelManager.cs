@@ -22,6 +22,7 @@ public class PanelManager : MonoBehaviour
 
     public void Showpanel(PanelType panelType)
     {
+        Debug.Log("Opening Panel: " + panelType);
         foreach (Panel panel in Panels)
         {
             if (panel.type != panelType)
@@ -36,11 +37,11 @@ public class PanelManager : MonoBehaviour
 
         if (panelType != PanelType.HUD)
         {
-            GlobalFunctions.instance.DisablePlayerMovements();
+            Global.instance.DisablePlayerMovements();
         }
         else
         {
-            GlobalFunctions.instance.EnablePlayerMovements();
+            Global.instance.EnablePlayerMovements();
         }
     }
 }

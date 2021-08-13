@@ -32,11 +32,12 @@ public class PlayerInputControl : MonoBehaviour
 
     void Update()
     {
-        if (DialoguePanel.instance.gameObject.activeSelf && Input.anyKeyDown)
+        if (DialoguePanel.instance.Panel.activeSelf && Input.anyKeyDown)
         {
+            Debug.Log("Error");
             DialoguePanel.instance.PrintNextText();
         }
-        if (raycast.raycastedObject != null)
+        else if (raycast.raycastedObject != null)
         {
             CheckInteractables();
             // Button just pressed
@@ -81,12 +82,12 @@ public class PlayerInputControl : MonoBehaviour
             {
                 if (raycast.raycastedObject.tag == "Water")
                 {
-                    if (WaterSystem.instance.current_water == GlobalVariables.instance.MaxWater || PlayerResources.instance.mode != PlayerMode.water_gun)
+                    if (WaterSystem.instance.current_water == Global.instance.MaxWater || PlayerResources.instance.mode != PlayerMode.water_gun)
                     {
                         return;
                     }
                     timer += Time.deltaTime;
-                    if (timer > GlobalVariables.instance.WaterAccquireSpeed)
+                    if (timer > Global.instance.WaterAccquireSpeed)
                     {
                         timer = 0;
                         WaterSystem.instance.current_water++;
@@ -126,22 +127,22 @@ public class PlayerInputControl : MonoBehaviour
         if (raycast.raycastedObject.tag == "InitialSpawn")
         {
             TipPanel.SetActive(true);
-            TipImage.sprite = GlobalVariables.instance.TransportSprite;
+            TipImage.sprite = Global.instance.TransportSprite;
         }
         else if (raycast.raycastedObject.tag == "Water")
         {
             TipPanel.SetActive(true);
-            TipImage.sprite = GlobalVariables.instance.WaterSprite;
+            TipImage.sprite = Global.instance.WaterSprite;
         }
         else if (raycast.raycastedObject.tag == "InteractableObject")
         {
             TipPanel.SetActive(true);
-            TipImage.sprite = GlobalVariables.instance.TransportSprite;
+            TipImage.sprite = Global.instance.TransportSprite;
         }
         else if (raycast.raycastedObject.tag == "Workshop")
         {
             TipPanel.SetActive(true);
-            TipImage.sprite = GlobalVariables.instance.BuildSprite;
+            TipImage.sprite = Global.instance.BuildSprite;
         }
         else
         {

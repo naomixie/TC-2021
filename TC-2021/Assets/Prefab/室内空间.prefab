@@ -5653,6 +5653,7 @@ GameObject:
   - component: {fileID: 7306515124805559426}
   - component: {fileID: 7306515124805559549}
   - component: {fileID: 527346601}
+  - component: {fileID: 1243495958}
   m_Layer: 0
   m_Name: "\u4FE1\u53F7\u63A5\u6536\u5668"
   m_TagString: Untagged
@@ -5737,6 +5738,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 42438508588594740, guid: 08645a3307cd6874c9f702fe8951bde6, type: 3}
+--- !u!114 &1243495958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306515124805559551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2c49f7be54b2841b8dff3afffccf54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectPrefab: {fileID: 0}
+  InspectDescription:
+  - 'Unknown Source:     He...help..help plea...     We''re....at the gas....tion....    
+    ...ran out.......oxygen....'
+  - It seems that someone is there outside...    He said he was at a gas station,
+    maybe I should go and see if I could help...
 --- !u!1 &7306515124821728068
 GameObject:
   m_ObjectHideFlags: 0
@@ -6730,6 +6749,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89a6b6ef360e475408fee797b0ea5038, type: 3}
+--- !u!1 &1666388613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6213377836852854975, guid: 89a6b6ef360e475408fee797b0ea5038,
+    type: 3}
+  m_PrefabInstance: {fileID: 6213377838510592570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1666388665 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6213377836852854915, guid: 89a6b6ef360e475408fee797b0ea5038,
@@ -6754,12 +6779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1666388613 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6213377836852854975, guid: 89a6b6ef360e475408fee797b0ea5038,
-    type: 3}
-  m_PrefabInstance: {fileID: 6213377838510592570}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7723515965748725509
 PrefabInstance:
   m_ObjectHideFlags: 0
