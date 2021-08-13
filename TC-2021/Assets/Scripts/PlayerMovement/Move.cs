@@ -40,6 +40,7 @@ public class Move : MonoBehaviour
     // 每更新一帧时执行
     void Update()
     {
+        if (!character.enabled) return;
         // 用于存储移动信息
         Vector3 movement = Vector3.zero;
         // 获取左右方向的移动信息
