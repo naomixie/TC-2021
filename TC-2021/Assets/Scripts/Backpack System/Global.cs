@@ -64,6 +64,7 @@ public class Global : MonoBehaviour
             Camera.main.GetComponent<CameraTrun>().enabled = false;
         GetComponent<CharacterController>().enabled = false;
     }
+
 }
 
 

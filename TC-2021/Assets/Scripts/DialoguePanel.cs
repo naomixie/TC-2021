@@ -38,7 +38,7 @@ public class DialoguePanel : MonoBehaviour
     {
         if (DisplayText == null)
         {
-            Debug.Log("Start Printing Text");
+            // Debug.Log("Start Printing Text");
             print_progress = 0;
             DisplayText = inspectableObject.InspectDescription;
             DisplayDialogueText(DisplayText[print_progress]);
@@ -51,7 +51,7 @@ public class DialoguePanel : MonoBehaviour
         if (DisplayText == null) return;
         if (print_progress + 1 == DisplayText.Count)
         {
-            Debug.Log("Print ends");
+            // Debug.Log("Print ends");
             DisplayText = null;
             current_print_text = "";
             PanelManager.instance.Showpanel(PanelType.HUD);
@@ -60,7 +60,7 @@ public class DialoguePanel : MonoBehaviour
         // Continue printing the next part
         else
         {
-            Debug.Log("Printed next text");
+            // Debug.Log("Printed next text");
             ++print_progress;
             DisplayDialogueText(DisplayText[print_progress]);
         }
@@ -100,4 +100,6 @@ public class DialoguePanel : MonoBehaviour
     {
         isPrint = false;
     }
+
+
 }

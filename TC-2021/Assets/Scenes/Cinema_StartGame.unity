@@ -5797,9 +5797,15 @@ PrefabInstance:
       propertyPath: where_to_go
       value: 
       objectReference: {fileID: 2083057861}
-    - target: {fileID: 1666388615, guid: d46cfd00d210e7c4c8395196a2d14111, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
+    - target: {fileID: 1243495958, guid: d46cfd00d210e7c4c8395196a2d14111, type: 3}
+      propertyPath: InspectDescription.Array.data[0]
+      value: Unknown Source:;He...help..help plea...;We're....at the gas....tion....;...ran
+        out.......oxygen....;
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243495958, guid: d46cfd00d210e7c4c8395196a2d14111, type: 3}
+      propertyPath: InspectDescription.Array.data[1]
+      value: It seems that someone is there outside...;He said he was at a gas station,
+        maybe I should go and see if I could help...
       objectReference: {fileID: 0}
     - target: {fileID: 7306515124821728068, guid: d46cfd00d210e7c4c8395196a2d14111,
         type: 3}
