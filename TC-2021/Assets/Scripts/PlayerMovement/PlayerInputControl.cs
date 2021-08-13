@@ -154,15 +154,18 @@ public class PlayerInputControl : MonoBehaviour
     {
         if (InventoryUI.instance.InventoryPanel.activeSelf)
         {
+            Debug.Log("Exiting Inventory Panel");
             PanelManager.instance.Showpanel(PanelType.HUD);
         }
         else
         {
+            Debug.Log("Showing Inventory Panel");
             PanelManager.instance.Showpanel(PanelType.Inventory);
+            foreach (InventorySlot slot in InventoryUI.instance.slots)
+            {
+                slot.UpdateInventorySlot();
+            }
         }
-        foreach (InventorySlot slot in InventoryUI.instance.slots)
-        {
-            slot.UpdateInventorySlot();
-        }
+
     }
 }
